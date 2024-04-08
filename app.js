@@ -8,6 +8,8 @@ app.use(bodyParser.json());
 app.use(express.static('public'))
 
 // Twig options
+app.set('vew engine', 'twig');
+app.set('views', './views');
 app.set("twig options", {
     allowAsync: true,
     strict_variables: false
