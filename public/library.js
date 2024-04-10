@@ -28,11 +28,15 @@ async function renderVilles(){
         let villeName = `${ville.name}`;
         let villeSkyState = `${ville.skystate}`;
 
+        let link = document.createElement("a");
+        link.href = "/";
+        main.appendChild(link);
         let card = document.createElement("div");
         card.classList = "card";
-        main.appendChild(card);
+        link.appendChild(card);
         let pName = document.createElement("p");
         pName.textContent = villeName;
+        pName.classList = "card-title";
         let pSkyState = document.createElement("p");
         pSkyState.textContent = villeSkyState;
         card.appendChild(pName);
@@ -40,6 +44,61 @@ async function renderVilles(){
     });
 }
 renderVilles();
+
+// Afficher les villes cherchée
+async function searchVille(){
+    let villes = await getVilles();
+    let search = document.querySelector("#search").value;
+    let main = document.querySelector("#main");
+
+    if (search == '') {
+        document.querySelectorAll('.card').forEach(e => e.remove());
+
+        villes.forEach(ville => {
+            let villeName = `${ville.name}`;
+            let villeSkyState = `${ville.skystate}`;
+    
+            let link = document.createElement("a");
+            link.href = "/";
+            main.appendChild(link);
+            let card = document.createElement("div");
+            card.classList = "card";
+            link.appendChild(card);
+            let pName = document.createElement("p");
+            pName.textContent = villeName;
+            pName.classList = "card-title";
+            let pSkyState = document.createElement("p");
+            pSkyState.textContent = villeSkyState;
+            card.appendChild(pName);
+            card.appendChild(pSkyState);
+        });
+    } else{
+        if (search.length >= 2) {
+            villes.forEach(ville => {
+                let villeName = `${ville.name}`;
+                let villeSkyState = `${ville.skystate}`;
+        
+                if (villeName.startsWith(search)) {
+                    document.querySelectorAll('.card').forEach(e => e.remove());
+    
+                    let link = document.createElement("a");
+                    link.href = "/";
+                    main.appendChild(link);
+                    let card = document.createElement("div");
+                    card.classList = "card";
+                    link.appendChild(card);
+                    let pName = document.createElement("p");
+                    pName.textContent = villeName;
+                    pName.classList = "card-title";
+                    let pSkyState = document.createElement("p");
+                    pSkyState.textContent = villeSkyState;
+                    card.appendChild(pName);
+                    card.appendChild(pSkyState);
+                }
+            });
+        }
+    }
+}
 
 // Ajouter une ville
 let addForm = document.getElementById("addForm");
