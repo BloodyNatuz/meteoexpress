@@ -18,7 +18,7 @@ app.set("twig options", {
 
 app.get('/', (req, res) => {
     res.render('./index.twig', {
-        message: "Hello world!",
+        message: "MeteoExpress",
         pageName: "Accueil"
     })
 })
@@ -163,6 +163,71 @@ app.patch('/api/villes/', (req, res, next) => {
             })
         }
     );
+})
+
+app.get('/villes/:id', function (req, res, next) {
+    async function getVilles(){
+        let url = 'http://localhost:4000/api/villes';
+        try {
+            let res = await fetch(url);
+            let brutDatas = await res.json();
+    
+            let cleanDatas = brutDatas.rows;
+    
+            return await cleanDatas;
+        } catch (error){
+            console.error(error);
+        }
+    }
+
+    async function showVille(){
+        let villes = await getVilles();
+
+        let villesIds = [];
+
+        villes.forEach(ville => {
+            villesIds.push(ville.id);
+        });
+
+        let parseParamsId = parseInt(req.params.id);
+
+        let checkIds = villesIds.some(e => e === parseParamsId);
+
+        let checkNumber = villesIds.find(e => e === parseParamsId);
+        let ajustIds = checkNumber - 1;
+        console.log(checkNumber);
+
+        if (checkIds) {
+            try {
+                let villeId = villes[ajustIds].id;
+                let villeName = villes[ajustIds].name;
+                let villeLon = villes[ajustIds].lon;
+                let villeLat = villes[ajustIds].lat;
+                let villeTemp = villes[ajustIds].temperature;
+                let villeWeather = villes[ajustIds].skystate;
+
+                console.log(villeName + " a l'ID " + villeId + " et l'URL " + parseParamsId);
+    
+                res.render('./ville.twig', {
+                    message: "MeteoExpress",
+                    pageName: villeName,
+                    villeName: villeName,
+                    villeLon: villeLon,
+                    villeLat: villeLat,
+                    villeTemp: villeTemp,
+                    villeWeather: villeWeather
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            res.render('./not-found.twig', {
+                message: "Page Not Found",
+                pageName: "404"
+            });
+        }
+    }
+    showVille();
 })
 
 app.listen(4000, () => {
