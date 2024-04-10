@@ -226,7 +226,9 @@ addForm.addEventListener("submit", function(e){
                 })
 
                 // Refresh the page to see the new content directly
-                window.location.reload(true);
+                setInterval(function(){
+                    window.location.reload(true);
+                }, 1500);
             }
         } catch (error) {
             console.error(error);
