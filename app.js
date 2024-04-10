@@ -130,7 +130,7 @@ async function updateVilles(){
         }
     })
 }
-var task = cron.schedule('0 */1 * * *', () => {
+var task = cron.schedule('* */1 * * *', () => {
     updateVilles();
 });
 task.start();
