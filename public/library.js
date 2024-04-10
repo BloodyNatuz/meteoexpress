@@ -33,6 +33,27 @@ async function renderVilles(){
         main.appendChild(link);
         let card = document.createElement("div");
         card.classList = "card";
+        if (villeSkyState.includes('clear' || villeSkyState.includes('fair'))) {
+            card.classList.add("clear-bg");
+        } if (villeSkyState.includes('fog')) {
+            card.classList.add("fog-bg");
+        } if (villeSkyState.includes("sleet")) {
+            card.classList.add("sleet-bg");
+        } if (villeSkyState.includes("cloudy") || villeSkyState.includes("partly")) {
+            card.classList.add("cloudy-bg");
+        } if (villeSkyState.includes("rain") && !villeSkyState.includes("thunder")) {
+            card.classList.add("rain-bg");
+        } if (villeSkyState.includes("rain") && villeSkyState.includes("thunder")) {
+            card.classList.add("thunder-bg");
+        } if (villeSkyState.includes("sleet") && villeSkyState.includes("thunder")) {
+            card.classList.add("sleet-bg");
+        } if (villeSkyState.includes("sleet") && !villeSkyState.includes("thunder")) {
+            card.classList.add("sleet-bg");
+        } if (villeSkyState.includes("snow") && villeSkyState.includes("thunder")) {
+            card.classList.add("snow-bg");
+        } if (villeSkyState.includes("snow") && !villeSkyState.includes("thunder")) {
+            card.classList.add("snow-bg");
+        }
         link.appendChild(card);
         let pName = document.createElement("p");
         pName.textContent = villeName;
@@ -63,6 +84,27 @@ async function searchVille(){
             main.appendChild(link);
             let card = document.createElement("div");
             card.classList = "card";
+            if (villeSkyState.includes('clear' || villeSkyState.includes('fair'))) {
+                card.classList.add("clear-bg");
+            } if (villeSkyState.includes('fog')) {
+                card.classList.add("fog-bg");
+            } if (villeSkyState.includes("sleet")) {
+                card.classList.add("sleet-bg");
+            } if (villeSkyState.includes("cloudy") || villeSkyState.includes("partly")) {
+                card.classList.add("cloudy-bg");
+            } if (villeSkyState.includes("rain") && !villeSkyState.includes("thunder")) {
+                card.classList.add("rain-bg");
+            } if (villeSkyState.includes("rain") && villeSkyState.includes("thunder")) {
+                card.classList.add("thunder-bg");
+            } if (villeSkyState.includes("sleet") && villeSkyState.includes("thunder")) {
+                card.classList.add("sleet-bg");
+            } if (villeSkyState.includes("sleet") && !villeSkyState.includes("thunder")) {
+                card.classList.add("sleet-bg");
+            } if (villeSkyState.includes("snow") && villeSkyState.includes("thunder")) {
+                card.classList.add("snow-bg");
+            } if (villeSkyState.includes("snow") && !villeSkyState.includes("thunder")) {
+                card.classList.add("snow-bg");
+            }
             link.appendChild(card);
             let pName = document.createElement("p");
             pName.textContent = villeName;
@@ -86,6 +128,27 @@ async function searchVille(){
                     main.appendChild(link);
                     let card = document.createElement("div");
                     card.classList = "card";
+                    if (villeSkyState.includes('clear' || villeSkyState.includes('fair'))) {
+                        card.classList.add("clear-bg");
+                    } if (villeSkyState.includes('fog')) {
+                        card.classList.add("fog-bg");
+                    } if (villeSkyState.includes("sleet")) {
+                        card.classList.add("sleet-bg");
+                    } if (villeSkyState.includes("cloudy") || villeSkyState.includes("partly")) {
+                        card.classList.add("cloudy-bg");
+                    } if (villeSkyState.includes("rain") && !villeSkyState.includes("thunder")) {
+                        card.classList.add("rain-bg");
+                    } if (villeSkyState.includes("rain") && villeSkyState.includes("thunder")) {
+                        card.classList.add("thunder-bg");
+                    } if (villeSkyState.includes("sleet") && villeSkyState.includes("thunder")) {
+                        card.classList.add("sleet-bg");
+                    } if (villeSkyState.includes("sleet") && !villeSkyState.includes("thunder")) {
+                        card.classList.add("sleet-bg");
+                    } if (villeSkyState.includes("snow") && villeSkyState.includes("thunder")) {
+                        card.classList.add("snow-bg");
+                    } if (villeSkyState.includes("snow") && !villeSkyState.includes("thunder")) {
+                        card.classList.add("snow-bg");
+                    }
                     link.appendChild(card);
                     let pName = document.createElement("p");
                     pName.textContent = villeName;
