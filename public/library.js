@@ -28,8 +28,10 @@ async function renderVilles(){
         let villeName = `${ville.name}`;
         let villeSkyState = `${ville.skystate}`;
 
+        let villeUrl = '/villes/' + `${ville.id}`;
+
         let link = document.createElement("a");
-        link.href = "/";
+        link.href = villeUrl;
         main.appendChild(link);
         let card = document.createElement("div");
         card.classList = "card";
@@ -66,7 +68,7 @@ async function renderVilles(){
 }
 renderVilles();
 
-// Afficher les villes cherchée
+// Afficher les villes cherchées
 async function searchVille(){
     let villes = await getVilles();
     let search = document.querySelector("#search").value;
@@ -79,8 +81,10 @@ async function searchVille(){
             let villeName = `${ville.name}`;
             let villeSkyState = `${ville.skystate}`;
     
+            let villeUrl = '/villes/' + `${ville.id}`;
+
             let link = document.createElement("a");
-            link.href = "/";
+            link.href = villeUrl;
             main.appendChild(link);
             let card = document.createElement("div");
             card.classList = "card";
@@ -123,8 +127,10 @@ async function searchVille(){
                 if (villeName.startsWith(search)) {
                     document.querySelectorAll('.card').forEach(e => e.remove());
     
+                    let villeUrl = '/villes/' + `${ville.id}`;
+
                     let link = document.createElement("a");
-                    link.href = "/";
+                    link.href = villeUrl;
                     main.appendChild(link);
                     let card = document.createElement("div");
                     card.classList = "card";
