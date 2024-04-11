@@ -6,6 +6,10 @@ body{
     margin: 0;
     font-family: 'Roboto', sans-serif;
     color: #121212;
+    background: rgb(160,223,255);
+    background: linear-gradient(169deg, rgba(160,223,255,1) 0%, rgba(188,243,255,1) 44%, rgba(206,247,255,1) 100%);
+    min-height: 100vh;
+    height: fit-content;
 }
 h1{
     font-size: 72pt;
@@ -64,7 +68,6 @@ main{
     width: 90%;
 }
 .card{
-    border: 1px solid #e5e5e5;
     justify-self: stretch;
     padding: 1em;
     border-radius: 10px;
@@ -94,6 +97,11 @@ main{
 }
 .snow-bg{
     background-image: url("/img/snow.webp");
+}
+.card-title{
+    width: fit-content;
+    opacity: 1;
+    background-color: #e4e4e4;
 }
 
 @media only screen and (max-width: 768px) {
