@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/villes', (req, res, next) => {
-    var sql = "select * from ville ORDER BY name ASC";
+    var sql = "select * from ville";
     var params = [];
     db.all(sql, params, (err, rows) => {
         if (err) {
