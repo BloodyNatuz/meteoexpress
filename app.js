@@ -195,7 +195,6 @@ app.get('/villes/:id', function (req, res, next) {
 
         let checkNumber = villesIds.find(e => e === parseParamsId);
         let ajustIds = checkNumber - 1;
-        console.log(checkNumber);
 
         if (checkIds) {
             try {
@@ -205,8 +204,6 @@ app.get('/villes/:id', function (req, res, next) {
                 let villeLat = villes[ajustIds].lat;
                 let villeTemp = villes[ajustIds].temperature;
                 let villeWeather = villes[ajustIds].skystate;
-
-                console.log(villeName + " a l'ID " + villeId + " et l'URL " + parseParamsId);
     
                 res.render('./ville.twig', {
                     message: "MeteoExpress",
