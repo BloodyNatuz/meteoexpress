@@ -22,7 +22,7 @@ async function getVilles(){
 async function renderVilles(){
     let villes = await getVilles();
 
-    let main = document.querySelector("#main");
+    let cards = document.querySelector("#cards");
 
     villes.forEach(ville => {
         let villeName = `${ville.name}`;
@@ -32,38 +32,33 @@ async function renderVilles(){
 
         let link = document.createElement("a");
         link.href = villeUrl;
-        main.appendChild(link);
-        let card = document.createElement("div");
-        card.classList = "card";
-        if (villeSkyState.includes('clear' || villeSkyState.includes('fair'))) {
-            card.classList.add("clear-bg");
+        cards.appendChild(link);
+        link.classList = "card";
+        if (villeSkyState.includes('clear') || villeSkyState.includes('fair')) {
+            link.classList.add("clear-bg");
         } if (villeSkyState.includes('fog')) {
-            card.classList.add("fog-bg");
+            link.classList.add("fog-bg");
         } if (villeSkyState.includes("sleet")) {
-            card.classList.add("sleet-bg");
+            link.classList.add("sleet-bg");
         } if (villeSkyState.includes("cloudy") || villeSkyState.includes("partly")) {
-            card.classList.add("cloudy-bg");
+            link.classList.add("cloudy-bg");
         } if (villeSkyState.includes("rain") && !villeSkyState.includes("thunder")) {
-            card.classList.add("rain-bg");
+            link.classList.add("rain-bg");
         } if (villeSkyState.includes("rain") && villeSkyState.includes("thunder")) {
-            card.classList.add("thunder-bg");
+            link.classList.add("thunder-bg");
         } if (villeSkyState.includes("sleet") && villeSkyState.includes("thunder")) {
-            card.classList.add("sleet-bg");
+            link.classList.add("sleet-bg");
         } if (villeSkyState.includes("sleet") && !villeSkyState.includes("thunder")) {
-            card.classList.add("sleet-bg");
+            link.classList.add("sleet-bg");
         } if (villeSkyState.includes("snow") && villeSkyState.includes("thunder")) {
-            card.classList.add("snow-bg");
+            link.classList.add("snow-bg");
         } if (villeSkyState.includes("snow") && !villeSkyState.includes("thunder")) {
-            card.classList.add("snow-bg");
+            link.classList.add("snow-bg");
         }
-        link.appendChild(card);
         let pName = document.createElement("p");
         pName.textContent = villeName;
         pName.classList = "card-title";
-        let pSkyState = document.createElement("p");
-        pSkyState.textContent = villeSkyState;
-        card.appendChild(pName);
-        card.appendChild(pSkyState);
+        link.appendChild(pName);
     });
 }
 renderVilles();
@@ -72,51 +67,46 @@ renderVilles();
 async function searchVille(){
     let villes = await getVilles();
     let search = document.querySelector("#search").value;
-    let main = document.querySelector("#main");
+    let cards = document.querySelector("#cards");
 
     if (search == '') {
         document.querySelectorAll('.card').forEach(e => e.remove());
 
         villes.forEach(ville => {
-            let villeName = `${ville.name}`;
+            let villeName = `${ville.name}`
             let villeSkyState = `${ville.skystate}`;
     
             let villeUrl = '/villes/' + `${ville.id}`;
 
             let link = document.createElement("a");
             link.href = villeUrl;
-            main.appendChild(link);
-            let card = document.createElement("div");
-            card.classList = "card";
-            if (villeSkyState.includes('clear' || villeSkyState.includes('fair'))) {
-                card.classList.add("clear-bg");
+            cards.appendChild(link);
+            link.classList = "card";
+            if (villeSkyState.includes('clear') || villeSkyState.includes('fair')) {
+                link.classList.add("clear-bg");
             } if (villeSkyState.includes('fog')) {
-                card.classList.add("fog-bg");
+                link.classList.add("fog-bg");
             } if (villeSkyState.includes("sleet")) {
-                card.classList.add("sleet-bg");
+                link.classList.add("sleet-bg");
             } if (villeSkyState.includes("cloudy") || villeSkyState.includes("partly")) {
-                card.classList.add("cloudy-bg");
+                link.classList.add("cloudy-bg");
             } if (villeSkyState.includes("rain") && !villeSkyState.includes("thunder")) {
-                card.classList.add("rain-bg");
+                link.classList.add("rain-bg");
             } if (villeSkyState.includes("rain") && villeSkyState.includes("thunder")) {
-                card.classList.add("thunder-bg");
+                link.classList.add("thunder-bg");
             } if (villeSkyState.includes("sleet") && villeSkyState.includes("thunder")) {
-                card.classList.add("sleet-bg");
+                link.classList.add("sleet-bg");
             } if (villeSkyState.includes("sleet") && !villeSkyState.includes("thunder")) {
-                card.classList.add("sleet-bg");
+                link.classList.add("sleet-bg");
             } if (villeSkyState.includes("snow") && villeSkyState.includes("thunder")) {
-                card.classList.add("snow-bg");
+                link.classList.add("snow-bg");
             } if (villeSkyState.includes("snow") && !villeSkyState.includes("thunder")) {
-                card.classList.add("snow-bg");
+                link.classList.add("snow-bg");
             }
-            link.appendChild(card);
             let pName = document.createElement("p");
             pName.textContent = villeName;
             pName.classList = "card-title";
-            let pSkyState = document.createElement("p");
-            pSkyState.textContent = villeSkyState;
-            card.appendChild(pName);
-            card.appendChild(pSkyState);
+            link.appendChild(pName);
         });
     } else{
         if (search.length >= 2) {
@@ -131,38 +121,33 @@ async function searchVille(){
 
                     let link = document.createElement("a");
                     link.href = villeUrl;
-                    main.appendChild(link);
-                    let card = document.createElement("div");
-                    card.classList = "card";
-                    if (villeSkyState.includes('clear' || villeSkyState.includes('fair'))) {
-                        card.classList.add("clear-bg");
+                    cards.appendChild(link);
+                    link.classList = "card";
+                    if (villeSkyState.includes('clear') || villeSkyState.includes('fair')) {
+                        link.classList.add("clear-bg");
                     } if (villeSkyState.includes('fog')) {
-                        card.classList.add("fog-bg");
+                        link.classList.add("fog-bg");
                     } if (villeSkyState.includes("sleet")) {
-                        card.classList.add("sleet-bg");
+                        link.classList.add("sleet-bg");
                     } if (villeSkyState.includes("cloudy") || villeSkyState.includes("partly")) {
-                        card.classList.add("cloudy-bg");
+                        link.classList.add("cloudy-bg");
                     } if (villeSkyState.includes("rain") && !villeSkyState.includes("thunder")) {
-                        card.classList.add("rain-bg");
+                        link.classList.add("rain-bg");
                     } if (villeSkyState.includes("rain") && villeSkyState.includes("thunder")) {
-                        card.classList.add("thunder-bg");
+                        link.classList.add("thunder-bg");
                     } if (villeSkyState.includes("sleet") && villeSkyState.includes("thunder")) {
-                        card.classList.add("sleet-bg");
+                        link.classList.add("sleet-bg");
                     } if (villeSkyState.includes("sleet") && !villeSkyState.includes("thunder")) {
-                        card.classList.add("sleet-bg");
+                        link.classList.add("sleet-bg");
                     } if (villeSkyState.includes("snow") && villeSkyState.includes("thunder")) {
-                        card.classList.add("snow-bg");
+                        link.classList.add("snow-bg");
                     } if (villeSkyState.includes("snow") && !villeSkyState.includes("thunder")) {
-                        card.classList.add("snow-bg");
+                        link.classList.add("snow-bg");
                     }
-                    link.appendChild(card);
                     let pName = document.createElement("p");
                     pName.textContent = villeName;
                     pName.classList = "card-title";
-                    let pSkyState = document.createElement("p");
-                    pSkyState.textContent = villeSkyState;
-                    card.appendChild(pName);
-                    card.appendChild(pSkyState);
+                    link.appendChild(pName);
                 }
             });
         }
