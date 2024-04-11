@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeteoExpress - {{ pageName }}</title>
+    <link rel="stylesheet" href="/style/ville.css">
 </head>
 <body>
     <nav>
@@ -13,10 +14,13 @@
         <h1>{{ message }}</h1>
 
         <h2>{{ villeName }}</h2>
-        <p>({{villeLon}} ; {{villeLat}})</p>
 
-        <img src="http://localhost:4000/img/{{villeWeather}}.svg" alt="{{villeWeather}}">
-        <p>{{villeTemp}}°C</p>
+        <p class="lon-lat">({{villeLon}} ; {{villeLat}})</p>
+
+        <div class="weather-infos">
+            <img src="http://localhost:4000/img/{{villeWeather}}.svg" alt="{{villeWeather}}">
+            <p class="temp">{{villeTemp}}°C</p>
+        </div>
     </main>
 </body>
 </html>
